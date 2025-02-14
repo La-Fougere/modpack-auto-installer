@@ -1,7 +1,6 @@
 # Modpack Auto Installer
 ### For Modpack creators
-A simple .exe generator to auto install modpack on Minecraft client
-
+#### A simple .exe generator to auto install modpack on Minecraft client
 
 Just put the needed content from your .minecraft folder
 
