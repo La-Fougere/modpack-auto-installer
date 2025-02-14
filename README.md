@@ -1,4 +1,4 @@
-# Modpack Auto Installer
+# Modpack Auto Installer (Windows)
 ### For Modpack creators
 #### A simple .exe generator to auto install modpack on Minecraft client
 
