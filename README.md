@@ -10,5 +10,4 @@ The player who runs the exe file will be asked for his .minecraft directory if i
 
 Also if mods were present before installation, these mods will be deleted
 
-Download link:
-https://github.com/La-Fougere/modpack-auto-installer/releases/tag/modpack-auto-installer
+## Download link: https://github.com/La-Fougere/modpack-auto-installer/releases/tag/modpack-auto-installer
