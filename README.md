@@ -4,7 +4,7 @@
 
 Just put the needed content from your .minecraft folder
 
-And if you want, you can add your own exe icon by replacing the file named icon.ico, then run the .sh file with Git (you also need python installed) and wait for the exe file to be created.
+And if you want, you can add your own exe icon by replacing the file named icon.ico, then run the .sh file with Git (you also need python installed) and wait for the exe file to be created. (The exe file will take the current folder name as his name)
 
 The player who runs the exe file will be asked for his .minecraft directory if its not the default one and the modpack will be installed.
 
