@@ -18,14 +18,14 @@ def get_minecraft_folder(default_path):
     root = tk.Tk()
     root.withdraw()
     
-    if messagebox.askyesno("Vérification du dossier", f"Ce dossier .minecraft est-il correct pour l'installation des mods ?\n\n{default_path}"):
+    if messagebox.askyesno("Folder verification", f"Is this .minecraft folder correct for mods installation?\n\n{default_path}"):
         return default_path
     
-    folder_path = filedialog.askdirectory(initialdir=default_path, title="Sélectionnez le dossier .minecraft")
+    folder_path = filedialog.askdirectory(initialdir=default_path, title="Select .minecraft folder")
     return folder_path if folder_path else default_path
 
 def install_files(minecraft_folder):
-    if messagebox.askyesno("Confirmation", "Voulez-vous procéder à l'installation des fichiers ?\n\nCela va supprimer les fichiers de votre dossier mods pour en ajouter de nouveaux"):
+    if messagebox.askyesno("Confirmation", "Do you want to proceed with file installation?\n\nThis will delete the files in your mods folder to add new ones"):
         source_folder = resource_path('files_for_.minecraft_folder')
         
         for item in os.listdir(source_folder):
@@ -38,38 +38,25 @@ def install_files(minecraft_folder):
 
         activate_resource_packs(minecraft_folder)
         
-        messagebox.showinfo("Succès", "Les fichiers ont été installés avec succès !\n\nVous pouvez supprimer ce ficher et lancer Minecraft dans la bonne version.")
+        messagebox.showinfo("Success", "Files were installed successfully!\n\nYou can delete this file and launch Minecraft in the correct version.")
     else:
-        messagebox.showinfo("Annulé", "L'installation a été annulée.")
+        messagebox.showinfo("Cancelled", "Installation was cancelled.")
 
 def activate_resource_packs(minecraft_folder):
     resourcepacks_folder = resource_path('files_for_.minecraft_folder/resourcepacks')
-    
-    # Récupérer les fichiers de resource packs et les trier
     resource_packs = sorted(os.listdir(resourcepacks_folder))
-    
-    # Nettoyer les noms de fichiers
     cleaned_resource_packs = []
     for pack in resource_packs:
-        cleaned_name = pack.replace('§', '_').replace(' ', '_')  # Remplacer les caractères spéciaux
+        cleaned_name = pack.replace('§', '_').replace(' ', '_')
         cleaned_resource_packs.append(cleaned_name)
-
-    # Formater la ligne pour options.txt
     formatted_resource_packs = ','.join(f'"{pack}"' for pack in cleaned_resource_packs)
-    
     options_file_path = os.path.join(minecraft_folder, 'options.txt')
-    
-    # Lire le contenu actuel du fichier options.txt
     with open(options_file_path, 'r') as file:
         lines = file.readlines()
-
-    # Modifier la ligne concernant les resource packs
     for i in range(len(lines)):
         if lines[i].startswith('resourcePacks:'):
             lines[i] = f'resourcePacks:[{formatted_resource_packs}]\n'
             break
-
-    # Écrire le contenu modifié dans options.txt
     with open(options_file_path, 'w') as file:
         file.writelines(lines)
 
